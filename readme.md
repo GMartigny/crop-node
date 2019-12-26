@@ -1,6 +1,6 @@
 # crop-node
 
-[![Package version](https://flat.badgen.net/npm/v/gmartigny/spritesheet)](https://www.npmjs.com/package/gmartigny/crop-node)
+[![Package version](https://flat.badgen.net/npm/v/crop-node)](https://www.npmjs.com/package/crop-node)
 
 Crop all transparent pixel around an image's edges. ([CLI version](https://github.com/gmartigny/crop-node-cli))
 
