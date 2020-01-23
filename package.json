@@ -2,7 +2,7 @@
     "name": "crop-node",
     "version": "1.0.0",
     "description": "Crop transparent pixel from image",
-    "main": "index.js",
+    "main": "index.mjs",
     "scripts": {
         "test": "ava"
     },
@@ -37,6 +37,7 @@
         "eslint": "^6.8.0"
     },
     "dependencies": {
-        "canvas": "^2.6.1"
+        "canvas": "^2.6.1",
+        "detect-edges": "^1.0.1"
     }
 }
