@@ -1,5 +1,6 @@
-const test = require("ava");
-const crop = require("..");
+import test from "ava";
+import Canvas from "canvas";
+import crop from "..";
 
 const run = async name => crop(`./test/fixtures/${name}.png`);
 
@@ -13,30 +14,38 @@ test("full", async (t) => {
     t.snapshot(res);
 });
 
-test("transparent", async (t) => {
-    await t.throwsAsync(() => run("transparent", "Can't detect edges."));
+test("input canvas", async (t) => {
+    const { createCanvas } = Canvas;
+    const canvas = createCanvas(100, 200);
+    const context = canvas.getContext("2d");
+    context.fillRect(10, 20, 10, 20);
+
+    const res = await crop(canvas);
+    t.snapshot(res);
 });
 
-test("detect only", async (t) => {
-    const edges = await crop("./test/fixtures/drawing.png", {
-        detectOnly: true,
-    });
-    t.deepEqual(edges, {
-        top: 8,
-        right: 15,
-        bottom: 21,
-        left: 8,
-    });
+test("transparent", async (t) => {
+    await t.throwsAsync(() => run("transparent", {
+        message: "Can't detect edges.",
+    }));
 });
 
 test("bad output format", async (t) => {
     await t.throwsAsync(() => crop("file.png", {
         outputFormat: "what",
-    }), /but "what" was given.$/);
+    }), {
+        message: /but "what" was given.$/,
+    });
 });
 
 test("no file", async (t) => {
-    await t.throwsAsync(() => crop(), "No file given.");
-    await t.throwsAsync(() => crop(""), "No file given.");
-    await t.throwsAsync(() => crop("whoot.png"), /no such file/i);
+    await t.throwsAsync(() => crop(), {
+        message: "No input given.",
+    });
+    await t.throwsAsync(() => crop(""), {
+        message: "No input given.",
+    });
+    await t.throwsAsync(() => crop("whoot.png"), {
+        message: /no such file/i,
+    });
 });

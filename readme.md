@@ -1,6 +1,7 @@
 # crop-node
 
 [![Package version](https://flat.badgen.net/npm/v/crop-node)](https://www.npmjs.com/package/crop-node)
+[![Package size](https://badgen.net/bundlephobia/minzip/crop-node)](https://bundlephobia.com/result?p=crop-node)
 
 Crop all transparent pixel around an image's edges. ([CLI version](https://github.com/gmartigny/crop-node-cli))
 
@@ -33,14 +34,15 @@ const options = {
 | Name | Type | Default | Comment |
 | --- | --- | --- | --- |
 |path |`String` |required |Path to the image to process |
-|options |`String` |(see below) |Some options |
+|options |`Options` |(see below) |Some options |
 
 ### `options`
 
 | Name | Type | Default | Comment |
 | --- | --- | --- | --- |
 |outputFormat |`String` |`"png"` |Format of the output image (`"png"` or `"jpeg"`) |
-|detectOnly |`Boolean` |`false` |Only return the detected edges |
+
+In addition, all [options of `detect-edges`](https://github.com/GMartigny/detect-edges#options) are supported.
 
 ## License
 
