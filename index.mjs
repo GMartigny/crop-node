@@ -13,7 +13,7 @@ const defaultOptions = {
  */
 /**
  * Crop transparent pixels from an image
- * @param {String|HTMLCanvasElement} input - Path to the image to process
+ * @param {String|HTMLCanvasElement} input - Path to the image to process or a tainted canvas
  * @param {Options} options - Some options
  * @returns {Promise<Buffer>}
  */

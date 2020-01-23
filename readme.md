@@ -9,6 +9,7 @@ Crop all transparent pixel around an image's edges. ([CLI version](https://githu
 
     npm install crop-node
 
+
 ## Usage
 
 ```js
@@ -27,13 +28,14 @@ const options = {
 })();
 ```
 
+
 ## Documentation
 
-### `crop(path, [options])`
+### `crop(input, [options])`
 
 | Name | Type | Default | Comment |
 | --- | --- | --- | --- |
-|path |`String` |required |Path to the image to process |
+|input |`String|HTMLCanvasElement` |required |Path to the image to process or a tainted canvas |
 |options |`Options` |(see below) |Some options |
 
 ### `options`
@@ -43,6 +45,7 @@ const options = {
 |outputFormat |`String` |`"png"` |Format of the output image (`"png"` or `"jpeg"`) |
 
 In addition, all [options of `detect-edges`](https://github.com/GMartigny/detect-edges#options) are supported.
+
 
 ## License
 
