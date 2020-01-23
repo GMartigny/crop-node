@@ -1,6 +1,6 @@
 {
     "name": "crop-node",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "Crop transparent pixel from image",
     "main": "index.mjs",
     "scripts": {
