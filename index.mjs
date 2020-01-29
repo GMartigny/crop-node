@@ -1,11 +1,11 @@
 import Canvas from "canvas";
-import detect from "detect-edges";
-
-const { loadImage, createCanvas } = Canvas;
+import crop from "crop-universal";
 
 const defaultOptions = {
     outputFormat: "png",
 };
+
+const cropper = crop(Canvas);
 
 /**
  * @typedef {Object} Options
@@ -13,7 +13,7 @@ const defaultOptions = {
  */
 /**
  * Crop transparent pixels from an image
- * @param {String|HTMLCanvasElement} input - Path to the image to process or a tainted canvas
+ * @param {String|Canvas.Canvas|Canvas.Image} input - Path to the image to process, another Canvas or an Image
  * @param {Options} options - Some options
  * @returns {Promise<Buffer>}
  */
@@ -23,44 +23,23 @@ export default async (input, options) => {
         ...options,
     };
 
-    if (!input) {
-        throw new Error("No input given.");
-    }
-
+    // Check outputFormat
     const supportedFormat = ["png", "jpeg"];
     if (!supportedFormat.includes(outputFormat)) {
         const supported = JSON.stringify(supportedFormat);
         throw new Error(`outputFormat should only be one of ${supported}, but "${outputFormat}" was given.`);
     }
 
-    const isString = typeof input === "string";
+    // Do crop
+    const canvas = await cropper(input, options);
 
-    let canvas;
-    let image;
-
-    if (isString) {
-        image = await loadImage(input);
-        const { width, height } = image;
-        canvas = createCanvas(width, height);
-    }
-    else {
-        canvas = input;
-    }
-
-    const { width, height } = canvas;
-    const context = canvas.getContext("2d");
-
-    if (isString) {
-        context.drawImage(image, 0, 0, width, height);
-    }
-
-    const data = context.getImageData(0, 0, width, height);
-
-    const { top, right, bottom, left } = detect(canvas, options);
-
-    canvas.width = width - (left + right);
-    canvas.height = height - (top + bottom);
-    context.putImageData(data, -left, -top);
-
-    return canvas.toBuffer(`image/${outputFormat}`);
+    // Export as a buffer
+    return new Promise((resolve, reject) => canvas.toBuffer((error, buffer) => {
+        if (error) {
+            reject(error);
+        }
+        else {
+            resolve(buffer);
+        }
+    }, `image/${outputFormat}`));
 };

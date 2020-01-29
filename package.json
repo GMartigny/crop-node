@@ -1,7 +1,18 @@
 {
     "name": "crop-node",
     "version": "2.0.0",
-    "description": "Crop transparent pixel from image",
+    "description": "Crop transparent pixel from image in Node.js",
+    "keywords": [
+        "trim",
+        "image",
+        "edge",
+        "cut",
+        "resize",
+        "transparent",
+        "opacity",
+        "pixel",
+        "remove"
+    ],
     "main": "index.mjs",
     "scripts": {
         "test": "ava"
@@ -18,17 +29,6 @@
         "type": "git",
         "url": "git+https://github.com/GMartigny/crop-node.git"
     },
-    "keywords": [
-        "trim",
-        "image",
-        "edge",
-        "cut",
-        "resize",
-        "transparent",
-        "opacity",
-        "pixel",
-        "remove"
-    ],
     "author": "GMartigny",
     "license": "MIT",
     "bugs": {
@@ -44,6 +44,6 @@
     },
     "dependencies": {
         "canvas": "^2.6.1",
-        "detect-edges": "^1.0.1"
+        "crop-universal": "^1.0.0"
     }
 }
