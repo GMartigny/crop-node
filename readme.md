@@ -37,7 +37,7 @@ const options = {
 
 | Name | Type | Default | Comment |
 | --- | --- | --- | --- |
-|input |`String|HTMLCanvasElement` |required |Path to the image to process or a tainted canvas |
+|input |`String\|any` |required |Path to the image to process or any [type supported by `Canvas.prototype.drawImage`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage#Parameters) |
 |options |`Options` |(see below) |Some options |
 
 ### `options`
