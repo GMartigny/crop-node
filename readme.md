@@ -1,7 +1,7 @@
 # crop-node
 
 [![Package version](https://flat.badgen.net/npm/v/crop-node)](https://www.npmjs.com/package/crop-node)
-[![Package size](https://badgen.net/bundlephobia/minzip/crop-node)](https://bundlephobia.com/result?p=crop-node)
+[![Package size](https://flat.badgen.net/bundlephobia/minzip/crop-node)](https://bundlephobia.com/result?p=crop-node)
 
 Crop all transparent pixel around an image's edges. ([CLI version](https://github.com/GMartigny/crop-node-cli))
 
