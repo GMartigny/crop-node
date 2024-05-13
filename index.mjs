@@ -14,10 +14,10 @@ const cropper = crop(Canvas);
 /**
  * Crop transparent pixels from an image
  * @param {String|Canvas.Canvas|Canvas.Image} input - Path to the image to process, another Canvas or an Image
- * @param {Options} options - Some options
+ * @param {Options} [options] - Some options
  * @returns {Promise<Buffer>}
  */
-export default async (input, options) => {
+export default async (input, options = {}) => {
     const { outputFormat } = {
         ...defaultOptions,
         ...options,

@@ -1,6 +1,7 @@
 {
     "name": "crop-node",
     "version": "2.1.0",
+    "type": "module",
     "description": "Crop transparent pixel from image in Node.js",
     "keywords": [
         "trim",
@@ -20,11 +21,6 @@
     "eslintConfig": {
         "extends": "@gmartigny/eslint-config"
     },
-    "ava": {
-        "require": [
-            "esm"
-        ]
-    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/GMartigny/crop-node.git"
@@ -38,12 +34,11 @@
     "funding": "https://github.com/GMartigny/crop-node?sponsor=1",
     "devDependencies": {
         "@gmartigny/eslint-config": "^1.4.2",
-        "ava": "^3.0.0",
-        "eslint": "^6.8.0",
-        "esm": "^3.2.25"
+        "ava": "^6.1.3",
+        "eslint": "^6.8.0"
     },
     "dependencies": {
-        "canvas": "^2.6.1",
+        "canvas": "^2.11.2",
         "crop-universal": "^1.0.0"
     }
 }

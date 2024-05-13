@@ -1,6 +1,6 @@
 import test from "ava";
 import Canvas from "canvas";
-import crop from "..";
+import crop from "../index.mjs";
 
 const run = async name => crop(`./test/fixtures/${name}.png`);
 
