@@ -1,6 +1,6 @@
 {
     "name": "crop-node",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "type": "module",
     "description": "Crop transparent pixel from image in Node.js",
     "keywords": [
