@@ -14,8 +14,8 @@ Crop all transparent pixel around an image's edges. ([CLI version](https://githu
 ## Usage
 
 ```js
-const crop = require("crop-node");
-const { writeFileSync } = require("fs");
+import crop from "crop-node";
+import { writeFileSync } from "fs";
 
 // Path to an image file
 const path = "path/to/image.png";
