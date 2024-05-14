@@ -23,23 +23,22 @@ export default async (input, options = {}) => {
         ...options,
     };
 
-    // Check outputFormat
     const supportedFormat = ["png", "jpeg"];
     if (!supportedFormat.includes(outputFormat)) {
         const supported = JSON.stringify(supportedFormat);
         throw new Error(`outputFormat should only be one of ${supported}, but "${outputFormat}" was given.`);
     }
 
-    // Do crop
     const canvas = await cropper(input, options);
 
-    // Export as a buffer
-    return new Promise((resolve, reject) => canvas.toBuffer((error, buffer) => {
-        if (error) {
-            reject(error);
-        }
-        else {
-            resolve(buffer);
-        }
-    }, `image/${outputFormat}`));
+    return new Promise((resolve, reject) => {
+        canvas.toBuffer((error, buffer) => {
+            if (error) {
+                reject(error);
+            }
+            else {
+                resolve(buffer);
+            }
+        }, `image/${outputFormat}`);
+    });
 };
